@@ -1,0 +1,27 @@
+{
+  "name": "topgun_project",
+  "version": "1.0.0",
+  "description": "Beta Version",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@line/bot-sdk": "^7.6.2",
+    "axios": "^1.5.0",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "debug": "^4.3.4",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "http-errors": "^2.0.0",
+    "mongodb": "^6.1.0",
+    "mongoose": "^7.5.2",
+    "morgan": "^1.10.0",
+    "mqtt": "^5.0.5",
+    "request": "^2.88.2"
+  }
+}
