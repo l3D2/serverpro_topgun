@@ -1,5 +1,5 @@
 const mqtt = require('mqtt');
-
+const fs = require('fs')
 const dotenv = require('dotenv')
 const env = dotenv.config().parsed
 
@@ -19,11 +19,15 @@ client.on('connect', () => {
   
   client.subscribe('test/mqtt');
   client.publish('test/mqtt', 'Client has been connected');
-});
+})
 
 client.on('message', (topic, message) => {
   console.log(`Received message on topic: ${topic}, message: ${message.toString()}`);
-});
+  if (topic == "test/img") {
+    console.log(`Received image data. Saving to file...`);
+    saveImageToFile(message);
+  }
+})
 
 client.on('close', () => {
   console.log('Disconnected from MQTT broker');
