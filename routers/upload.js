@@ -16,10 +16,9 @@ router.post('/', upload.single('image'), (req, res) => {
     }
 
     const imageBuffer = req.file.buffer;
-    const filename = './img/uploaded_image.jpg';
-    const directoryPath = './img';
+    const folderName = req.headers['device-name'];
 
-    //เช็คpath img
+    const directoryPath = `./img/${folderName}`;
     if (!fs.existsSync(directoryPath)) {
         try {
             fs.mkdirSync(directoryPath, { recursive: true });
@@ -28,9 +27,9 @@ router.post('/', upload.single('image'), (req, res) => {
             return res.status(500).send({ error: 'Error creating the directory' });
         }
     }
-
     try {
-        fs.writeFileSync(filename, imageBuffer);
+        const filename = 'uploaded_image.jpg';
+        fs.writeFileSync(`${directoryPath}/${filename}`, imageBuffer);
         return res.status(200).send({ success: 'Image received and saved successfully' });
     } catch (error) {
         console.error(error);
