@@ -2,6 +2,10 @@ const express = require('express');
 const app = express();
 const createError = require('http-errors');
 const logger = require('morgan');
+const dotenv = require('dotenv')
+const env = dotenv.config().parsed
+
+//Include routes
 const api_upload = require('./routers/upload');
 const index_router = require('./routers/index');
 
@@ -31,8 +35,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(8080, function() {
-  console.log('Example app listening on port 8080!');
+app.listen(env.PORT, function() {
+  console.log('App listening on port '+env.PORT);
 });
 
 module.exports = app;

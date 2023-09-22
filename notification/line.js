@@ -40,6 +40,6 @@ const handleMessage = async (event) => {
         return Client.replyMessage(event.replyToken, {type: 'text', text: 'Test Message'})
 }
 
-app.listen(4500, function () {
-    console.log('Line webhook listening on port'+ 4500)
+app.listen(env.LINE_PORT, function () {
+    console.log('Line webhook listening on port'+ env.LINE_PORT)
 })
